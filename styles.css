@@ -1043,16 +1043,36 @@ body::before {
   .taglines__stage { width: 100%; min-height: 2.6em; }
   .taglines__label { font-size: 11px; }
 
-  /* Hero: leave room for the seal at top-right */
+  /* Hero: natural height; let it flow straight into About */
   .hero {
     min-height: auto;
+    justify-content: flex-start;
     padding-top: clamp(40px, 8vh, 70px);
-    padding-bottom: clamp(40px, 6vh, 60px);
+    padding-bottom: clamp(20px, 3vh, 36px);
+    gap: clamp(18px, 3vw, 28px);
   }
 
-  /* About hero & lead text */
-  .about-hero .lead { font-size: 17px; }
-  .about-hero h1 { font-size: clamp(40px, 11vw, 64px); }
+  /* About: tight top so it reads as a continuation, not a new page.
+     A thin rule bridges the hero and about visually. */
+  .about {
+    padding-top: clamp(24px, 4vh, 40px);
+    gap: clamp(14px, 2vw, 20px);
+    position: relative;
+  }
+  .about::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: clamp(18px, 3vh, 28px);
+    opacity: 0.6;
+  }
+
+  /* About hero: scale back so it feels like a continuation, not a 2nd title */
+  .about-hero { gap: 10px; }
+  .about-hero h1 { font-size: clamp(30px, 8.5vw, 44px); line-height: 1.05; }
+  .about-hero .lead { font-size: 16.5px; }
 
   /* Journey row — compact */
   .journey { font-size: 10.5px; gap: 6px 10px; }
@@ -1084,7 +1104,7 @@ body::before {
 @media (max-width: 380px) {
   :root { --gutter: 16px; }
   .title { font-size: clamp(48px, 16vw, 80px); }
-  .about-hero h1 { font-size: clamp(36px, 10vw, 56px); }
+  .about-hero h1 { font-size: clamp(26px, 8vw, 36px); }
   .photos--polaroid { max-width: 170px; }
   .hero__seal { width: 56px; height: 56px; }
   .hero__seal-mark { font-size: 18px; }
