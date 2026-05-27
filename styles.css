@@ -7,9 +7,9 @@
   --ink-soft: #5D5045;
   --ink-mute: #8C7E6F;
   --rule: #D9CBB3;
-  --accent: #C25E3C;          /* terracotta */
-  --accent-soft: #E3A883;
-  --accent-ink: #7A2E16;
+  --accent: #6E7C3A;          /* olive */
+  --accent-soft: #B8C284;
+  --accent-ink: #3D4520;
   --gold: #C7984A;
 
   --font-serif: "Instrument Serif", "Newsreader", Georgia, serif;
@@ -235,7 +235,7 @@ body::before {
 .title {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(72px, 17vw, 280px);
+  font-size: clamp(56px, 17vw, 280px);
   line-height: 0.86;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -272,7 +272,7 @@ body::before {
   inset: 0;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(26px, 4.2vw, 56px);
+  font-size: clamp(22px, 4.2vw, 56px);
   line-height: 1.05;
   color: var(--ink);
   opacity: 0;
@@ -352,13 +352,14 @@ body::before {
 /* ---------- Rotating editorial seal ---------- */
 .hero__seal {
   position: absolute;
-  top: clamp(-12px, -1vw, 0px);
-  right: clamp(-170px, -11vw, -110px);
-  width: clamp(108px, 9.5vw, 150px);
-  height: clamp(108px, 9.5vw, 150px);
+  top: 10px;
+  left: calc(100% + 12px);
+  width: clamp(80px, 8vw, 120px);
+  height: clamp(80px, 8vw, 120px);
   pointer-events: none;
   color: var(--accent);
   animation: sealBreathe 5.2s ease-in-out infinite;
+  z-index: 3;
 }
 .hero__seal-svg {
   width: 100%;
@@ -399,14 +400,26 @@ body::before {
   0%,100% { transform: scale(1) rotate(0deg); opacity: 0.95; }
   50%     { transform: scale(1.25) rotate(45deg); opacity: 0.6; }
 }
-@media (max-width: 900px) {
+/* Below ~1100px: keep the seal next to the trailing italic "Tu",
+   just smaller so it doesn't crowd the title. */
+@media (max-width: 1100px) {
   .hero__seal {
-    right: 0;
-    top: auto;
-    bottom: -16px;
-    width: 96px;
-    height: 96px;
+    width: 84px;
+    height: 84px;
+    top: 6px;
+    left: calc(100% + 10px);
+    right: auto;
   }
+}
+@media (max-width: 640px) {
+  .hero__seal {
+    width: 58px;
+    height: 58px;
+    top: 2px;
+    left: calc(100% + 6px);
+  }
+  .hero__seal-mark { font-size: 18px; }
+  .seal-text { font-size: 7.5px; letter-spacing: 0.14em; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__seal,
@@ -509,6 +522,7 @@ body::before {
   align-items: center;
   color: var(--ink);
   transition: color .25s ease;
+  white-space: nowrap;
 }
 .journey .step.is-now {
   color: var(--accent);
@@ -558,6 +572,9 @@ body::before {
   align-items: baseline;
   flex-wrap: wrap;
   gap: 6px 10px;
+}
+.work-line__items > span {
+  white-space: nowrap;
 }
 .work-line__items .sep {
   color: var(--ink-mute);
@@ -705,9 +722,11 @@ body::before {
 .photo--tall { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
 .photo--wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
 .photo--sq   { aspect-ratio: 1 / 1; }
-.photo image-slot {
+.photo image-slot,
+.photo img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
   border-radius: 4px;
   background: var(--bg-2);
@@ -725,7 +744,9 @@ body::before {
 .photos--polaroid {
   display: block;
   position: relative;
-  height: clamp(240px, 28vh, 340px);
+  width: 100%;
+  height: clamp(280px, 32vh, 380px);
+  max-width: 420px;
   padding: 0;
   overflow: visible;
 }
@@ -741,9 +762,11 @@ body::before {
   overflow: visible;
   transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease;
 }
-.photos--polaroid .photo image-slot {
+.photos--polaroid .photo image-slot,
+.photos--polaroid .photo img {
   display: block;
   width: 100%;
+  object-fit: cover;
   aspect-ratio: 1 / 1.05;
   background: var(--bg-2);
   border-radius: 0;
@@ -784,14 +807,29 @@ body::before {
     0 2px 4px rgba(40, 25, 10, 0.1),
     0 28px 50px -12px rgba(40, 25, 10, 0.28);
 }
+/* Tablet portrait & phone: show only the Nancy photo, smaller & centered in flow */
 @media (max-width: 899px) {
   .photos--polaroid {
-    min-height: 480px;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-width: 220px;
+    margin: 8px auto 0;
+    padding: 0;
   }
-  .photos--polaroid .photo { width: 58%; }
-  .photos--polaroid .photo--p1 { left: 0; }
-  .photos--polaroid .photo--p2 { right: 0; }
-  .photos--polaroid .photo--p3 { left: 18%; }
+  .photos--polaroid .photo--p2,
+  .photos--polaroid .photo--p3 { display: none; }
+  .photos--polaroid .photo--p1 {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    transform: rotate(-2deg);
+    padding: 8px 8px 28px;
+  }
+  .photos--polaroid .photo figcaption { font-size: 14px; }
 }
 
 /* Moving / interests strip */
@@ -998,9 +1036,56 @@ body::before {
 @media (max-width: 640px) {
   .nav__brand .meta-loc { display: none; }
   .float-layer { display: none; }
+
+  /* Tagline: allow wrap, give stage room for 2 lines */
   .tagline { white-space: normal; }
   .taglines { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .taglines__stage { width: 100%; }
+  .taglines__stage { width: 100%; min-height: 2.6em; }
+  .taglines__label { font-size: 11px; }
+
+  /* Hero: leave room for the seal at top-right */
+  .hero {
+    min-height: auto;
+    padding-top: clamp(40px, 8vh, 70px);
+    padding-bottom: clamp(40px, 6vh, 60px);
+  }
+
+  /* About hero & lead text */
+  .about-hero .lead { font-size: 17px; }
+  .about-hero h1 { font-size: clamp(40px, 11vw, 64px); }
+
+  /* Journey row — compact */
+  .journey { font-size: 10.5px; gap: 6px 10px; }
+  .journey .arrow { width: 12px; }
+  .journey .step.is-now::after { display: none; }
+
+  /* Work-line — slightly smaller */
+  .work-line { font-size: 10.5px; gap: 6px 10px; }
+
+  /* Talk row stacks */
+  .talk-row { flex-direction: column; align-items: flex-start; }
+  .prose .talk { font-size: clamp(22px, 6vw, 28px); }
+  .prose { font-size: 17px; }
+
+  /* Polaroid: phone — even smaller, still centered */
+  .photos--polaroid {
+    max-width: 190px;
+    margin: 12px auto 0;
+  }
+  .photos--polaroid .photo figcaption { font-size: 13px; }
+
+  /* Outro stack */
+  .outro .links { justify-content: flex-start; flex-wrap: wrap; gap: 10px; }
+
   .hero__foot .meta { gap: 14px; }
-  .tweaks { right: 10px; bottom: 10px; width: calc(100vw - 20px); max-width: 260px; }
+}
+
+/* Extra-small phones (<= 380px) */
+@media (max-width: 380px) {
+  :root { --gutter: 16px; }
+  .title { font-size: clamp(48px, 16vw, 80px); }
+  .about-hero h1 { font-size: clamp(36px, 10vw, 56px); }
+  .photos--polaroid { max-width: 170px; }
+  .hero__seal { width: 56px; height: 56px; }
+  .hero__seal-mark { font-size: 18px; }
 }

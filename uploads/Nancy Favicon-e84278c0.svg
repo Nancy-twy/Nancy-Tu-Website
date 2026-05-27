@@ -1,0 +1,18 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <title>Nancy Tu Favicon</title>
+  <defs>
+    
+  </defs>
+  
+  
+  <circle cx="256" cy="256" r="256" fill="#6E7C3A"></circle>
+  
+  
+  <ellipse cx="180" cy="256" rx="40" ry="160" class="petal-1"></ellipse>
+  
+  
+  <ellipse cx="256" cy="270" rx="46" ry="172" class="petal-2" transform="rotate(30 256 270)"></ellipse>
+  
+  
+  <ellipse cx="332" cy="256" rx="40" ry="160" class="petal-3"></ellipse>
+</svg>

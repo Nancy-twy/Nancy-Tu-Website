@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <title>Nancy Tu</title>
+  <circle cx="256" cy="256" r="256" fill="#6E7C3A"></circle>
+  <ellipse cx="178" cy="256" rx="36" ry="138" fill="#E8A6BC"></ellipse>
+  <ellipse cx="256" cy="256" rx="38" ry="148" fill="#F2C3D2" transform="rotate(28 256 256)"></ellipse>
+  <ellipse cx="334" cy="256" rx="36" ry="138" fill="#E8A6BC"></ellipse>
+</svg>

@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nancy Tu — Chaos Translator, Lifelong Learner</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Caveat:wght@400;500&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -41,7 +42,7 @@
         <div class="title-wrap">
           <h1 class="title reveal" data-tilt>Nancy <em>Tu</em></h1>
 
-          <!-- Rotating editorial seal -->
+          <!-- Rotating editorial seal — tucked next to the title -->
           <div class="hero__seal reveal" aria-hidden="true">
             <svg viewBox="0 0 120 120" class="hero__seal-svg">
               <defs>
@@ -122,21 +123,15 @@
 
         <aside class="photos photos--polaroid reveal">
           <figure class="photo photo--p1">
-            <image-slot id="nt-photo-1"
-              shape="rect"
-              placeholder="A portrait of you"></image-slot>
+            <img src="images/nt-photo-1.webp" alt="Nancy" loading="lazy" />
             <figcaption>Nancy</figcaption>
           </figure>
           <figure class="photo photo--p2">
-            <image-slot id="nt-photo-2"
-              shape="rect"
-              placeholder="A place that shaped you"></image-slot>
+            <img src="images/nt-photo-2.webp" alt="A place I loved" loading="lazy" />
             <figcaption>somewhere I loved</figcaption>
           </figure>
           <figure class="photo photo--p3">
-            <image-slot id="nt-photo-3"
-              shape="rect"
-              placeholder="Moving — yoga, dive, trail"></image-slot>
+            <img src="images/nt-photo-3.webp" alt="On the move" loading="lazy" />
             <figcaption>on the move</figcaption>
           </figure>
         </aside>
@@ -149,51 +144,6 @@
     </section>
   </main>
 
-  <!-- Tweaks panel -->
-  <button class="btn" data-tweaks-toggle aria-label="Tweak design"
-    style="position:fixed; right:16px; bottom:16px; z-index:199; padding:8px 12px; background:var(--paper); border-color:var(--rule); color:var(--ink-soft);">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-      <circle cx="12" cy="12" r="3"></circle>
-      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1A2 2 0 1 1 4.3 16.9l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 1 1 7.1 4.3l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.18.43.6.7 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
-    </svg>
-    <span>Style</span>
-  </button>
-
-  <aside class="tweaks" data-tweaks>
-    <h4>Style <button data-tweaks-close aria-label="Close">×</button></h4>
-    <div class="group">
-      <label class="small">Accent</label>
-      <div class="swatches">
-        <button data-accent="terracotta" style="background:#C25E3C" aria-label="Terracotta"></button>
-        <button data-accent="ochre"      style="background:#B98231" aria-label="Ochre"></button>
-        <button data-accent="olive"      style="background:#6E7C3A" aria-label="Olive"></button>
-        <button data-accent="ink"        style="background:#2A211A" aria-label="Ink"></button>
-      </div>
-    </div>
-    <div class="group">
-      <label class="small">Background</label>
-      <div class="swatches">
-        <button data-bg="cream"  style="background:#F4ECDD" aria-label="Cream"></button>
-        <button data-bg="sand"   style="background:#EFE3CC" aria-label="Sand"></button>
-        <button data-bg="rose"   style="background:#F6E9DF" aria-label="Rose"></button>
-        <button data-bg="linen"  style="background:#F2EDE2" aria-label="Linen"></button>
-        <button data-bg="bone"   style="background:#F7F2E8" aria-label="Bone"></button>
-        <button data-bg="shell"  style="background:#F5E6DC" aria-label="Shell"></button>
-        <button data-bg="mist"   style="background:#E8EAE5" aria-label="Mist"></button>
-        <button data-bg="olive"  style="background:#ECEAD8" aria-label="Olive"></button>
-      </div>
-    </div>
-    <div class="group">
-      <label class="small">Motion</label>
-      <div class="seg">
-        <button data-motion="gentle">Gentle</button>
-        <button data-motion="lively">Lively</button>
-        <button data-motion="still">Still</button>
-      </div>
-    </div>
-  </aside>
-
-  <script src="image-slot.js"></script>
   <script src="site.js"></script>
 </body>
 </html>
